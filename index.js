@@ -1,24 +1,24 @@
 // declaro variables
 
-let nombre = prompt("Ingrese su nombre");
-let apellido = prompt("Ingrese su apellido");
-let anoNac = parseInt(prompt("Ingrese su año de nacimiento"));
-let marca = prompt("Ingrese la Marca de su vehículo, por ej. Ford, Fiat, Renault, Chevrolet, ect.");
-let modelo = prompt("Ingrese el Modelo, ej. Fiesta, Focus, Duster, Captur, Toro, Cronos, Spin, Cruze, etc.");
-let marcaModelo = (marca + " " + modelo)
-let anoFab = parseInt(prompt("Ingrese el año de fabricación"));
+let name = prompt("Ingrese su nombre");
+let lastName = prompt("Ingrese su apellido");
+let yearBorn = parseInt(prompt("Ingrese su año de nacimiento"));
+let brand = prompt("Ingrese la Marca de su vehículo, por ej. Ford, Fiat, Renault, Chevrolet, ect.");
+let model = prompt("Ingrese el Modelo, ej. Fiesta, Focus, Duster, Captur, Toro, Cronos, Spin, Cruze, etc.");
+let brandModel = (brand + " " + model)
+let yearManu = parseInt(prompt("Ingrese el año de fabricación"));
 const year = 2021;    
-var edad = year - anoNac;
-let antiguedad = (year - anoFab);
+var age = year - yearBorn;
+let antiquity = (year - yearManu);
 
 // Funciones
 
-function descEdad () {    
+function ageDisc () {    
    
-    if (edad > 39 && edad <56) {
+    if (age > 39 && age <56) {
         return 5;
     }
-    else if (edad > 55 && edad < 66) {
+    else if (age > 55 && age < 66) {
         return 3;
     }
     else{
@@ -26,32 +26,32 @@ function descEdad () {
     }
 }
 
-function precio () {
+function price () {
     
-    switch(marcaModelo) {
+    switch(brandModel) {
 
-        case "Ford Fiesta": return Math.round((1500000/3500*30) + (antiguedad*10));
+        case "Ford Fiesta": return Math.round((1500000/3500*30) + (antiquity*10));
 
-        case "Ford Focus": return Math.round((2000000/3500*20) + (antiguedad*10));
+        case "Ford Focus": return Math.round((2000000/3500*20) + (antiquity*10));
 
-        case "Renault Duster": return Math.round((2000000/3500*20) + (antiguedad*10));
+        case "Renault Duster": return Math.round((2000000/3500*20) + (antiquity*10));
         
-        case "Renault Captur": return Math.round((2500000/3500*20) + (antiguedad*10));
+        case "Renault Captur": return Math.round((2500000/3500*20) + (antiquity*10));
         
-        case "Fiat Toro": return Math.round((3500000/3500*20) + (antiguedad*10));
+        case "Fiat Toro": return Math.round((3500000/3500*20) + (antiquity*10));
         
-        case "Fiat Cronos": return Math.round((2000000/3500*20) + (antiguedad*10));
+        case "Fiat Cronos": return Math.round((2000000/3500*20) + (antiquity*10));
 
-        case "Chevrolet Spin": return Math.round((2500000/3500*20) + (antiguedad*10));
+        case "Chevrolet Spin": return Math.round((2500000/3500*20) + (antiquity*10));
 
-        case "Chevrolet Cruze": return Math.round((3500000/3500*20) + (antiguedad*10));
+        case "Chevrolet Cruze": return Math.round((3500000/3500*20) + (antiquity*10));
 
-        default: return Math.round((2000000/3500*20) + (antiguedad*10));
+        default: return Math.round((2000000/3500*20) + (antiquity*10));
     }
 }
 
-function descMarca() {
-    switch (marca) {
+function brandDisc () {
+    switch (brand) {
 
         case "Ford": return 6;    
 
@@ -65,37 +65,35 @@ function descMarca() {
     }    
 }
 
-function precioFinal() {    
+function finalPrice () {    
 
-    return Math.round (precio() - ((precio() * (descEdad() + descMarca()))/100));
+    return Math.round (price() - ((price() * (ageDisc() + brandDisc()))/100));
 
 }
 
-function mostrar() {
+function show() {
 
-    if (descMarca() > 0 && descEdad() > 0) {
-        alert ("Estimado " + nombre + " " + apellido + " para su vehículo " + marca + " " + modelo + " del año " + anoFab + " tiene un descuento del " + descMarca() + " % sobre el precio de lista $" + precio());
-
-        alert ("Además por tener " + edad + " años de edad, posee un descuento extra del " + descEdad() + " %");
-
-        alert ("Obteniendo un descuento TOTAL de " + (descEdad() + descMarca()) + " %, Felicidades!!, el valor de la cuota mensual es de $ " + precioFinal());
+    if (brandDisc() > 0 && ageDisc() > 0) {
+        alert ("Estimado " + name + " " + lastName + " para su vehículo " + brand + " " + model + " del año " + yearManu + " tiene un descuento del " + brandDisc() + " % sobre el precio de lista $" + price() + '\n' + "Además por tener " + age + " años de edad, posee un descuento extra del " + ageDisc() + " %" + '\n' + "Obteniendo un descuento TOTAL de " + (ageDisc() + brandDisc()) + " % ¡¡Felicidades!!" + '\n' + '\n' +  "El valor de la cuota mensual es de $ " + finalPrice());
 
     } //descuento marca y edad        
 
-    else if (descMarca() > 0) {
-        alert ("Estimado " + nombre + " " + apellido + " para su vehículo " + marca + " " + modelo + " del año " + anoFab + " tiene un descuento del " + descMarca() + " % sobre el precio de lista $" + precio() + ", Felicidades!!, el valor de la cuota mensual es de $" + precioFinal());
+    else if (brandDisc() > 0) {
+        alert ("Estimado " + name + " " + lastName + " para su vehículo " + brand + " " + model + " del año " + yearManu + " tiene un descuento del " + brandDisc() + " % sobre el precio de lista $" + price() + " ¡¡Felicidades!!" + '\n' + '\n' +  "El valor de la cuota mensual es de $ " + finalPrice());
+
 
     } //descuento por marca
     
-    else if (descEdad() > 0) {
-        alert ("Estimado " + nombre + " " + apellido + " por tener " + edad + " años de edad, posees un descuento del " + descEdad() + " % para su vehículo " + marca + " " + modelo + " del año " + anoFab + " sobre el precio de lista $" + precio() + ", Felicidades!!, el valor de la cuota mensual es de $ " + precioFinal());
+    else if (ageDisc() > 0) {
+        alert ("Estimado " + name + " " + lastName + " por tener " + age + " años de edad, posees un descuento del " + ageDisc() + " % para su vehículo " + brand + " " + model + " del año " + yearManu + " sobre el precio de lista $" + price() + " ¡¡Felicidades!!" + '\n' + '\n' +  "El valor de la cuota mensual es de $ " + finalPrice());
+
 
     } // descuento por edad   
 
     else {
-    alert ("Estimado " + nombre + " " + apellido + " su vehículo " + marca + " " + modelo + " del año " + anoFab + " por el momento NO tiene descuento disponible, el valor de la cuota mensual es de $ " + precioFinal());
+    alert ("Estimado " + name + " " + lastName + " su vehículo " + brand + " " + model + " del año " + yearManu + " por el momento NO tiene descuento disponible, el valor de la cuota mensual es de $ " + finalPrice());
 
     } // sin descuento
 }
 
-mostrar();
+show();
